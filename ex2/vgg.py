@@ -88,7 +88,7 @@ class CNN_LR(torch.nn.Module):
 class LeNet(nn.Module):
     def __init__(self):
         super(LeNet, self).__init__()
-        self.conv1 = nn.Conv2d(3, 6, 3)
+        self.conv1 = nn.Conv2d(3, 6, 3) 
         self.conv2 = nn.Conv2d(6, 16, 3)
         self.fc1 = nn.Linear(16 * 22 * 22, 120)
         self.fc2 = nn.Linear(120, 84)
@@ -102,7 +102,60 @@ class LeNet(nn.Module):
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         x = self.fc3(x)
-        return torch.sigmoid(x)
+        return x
+
+
+
+class AlexNet(nn.Module):
+    def __init__(self, num_classes=1):
+        super(AlexNet, self).__init__()
+        self.layer1 = nn.Sequential(
+            nn.Conv2d(3, 96, kernel_size=11, stride=4, padding=0),
+            nn.BatchNorm2d(96),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size = 3, stride = 2))
+        self.layer2 = nn.Sequential(
+            nn.Conv2d(96, 256, kernel_size=5, stride=1, padding=2),
+            nn.BatchNorm2d(256),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size = 3, stride = 2))
+        self.layer3 = nn.Sequential(
+            nn.Conv2d(256, 384, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(384),
+            nn.ReLU())
+        self.layer4 = nn.Sequential(
+            nn.Conv2d(384, 384, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(384),
+            nn.ReLU())
+        self.layer5 = nn.Sequential(
+            nn.Conv2d(384, 256, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(256),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size = 3, stride = 2))
+        self.fc = nn.Sequential(
+            nn.Dropout(0.5),
+            nn.Linear(256, 128),
+            nn.ReLU())
+        self.fc1 = nn.Sequential(
+            nn.Dropout(0.5),
+            nn.Linear(128, 64),
+            nn.ReLU())
+        self.fc2= nn.Sequential(
+            nn.Linear(64, num_classes))
+        
+    def forward(self, x):
+        out = self.layer1(x)
+        out = self.layer2(out)
+        out = self.layer3(out)
+        out = self.layer4(out)
+        out = self.layer5(out)
+        #print(out.shape)
+        out = out.reshape(out.size(0), -1)
+        #print(out.shape)
+        out = self.fc(out)
+        out = self.fc1(out)
+        out = self.fc2(out)
+        return torch.sigmoid(out)
 
     # def num_flat_features(self, x):
     #     size = x.size()[1:]
@@ -112,7 +165,101 @@ class LeNet(nn.Module):
     #     return num_features
 
 #model = CNN_LR()
-model = LeNet()
+    
+class VGG16(nn.Module):
+    def __init__(self, num_classes=1):
+        super(VGG16, self).__init__()
+        self.layer1 = nn.Sequential(
+            nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(64),
+            nn.ReLU())
+        self.layer2 = nn.Sequential(
+            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(64),
+            nn.ReLU(), 
+            nn.MaxPool2d(kernel_size = 2, stride = 2))
+        self.layer3 = nn.Sequential(
+            nn.Conv2d(64, 128, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(128),
+            nn.ReLU())
+        self.layer4 = nn.Sequential(
+            nn.Conv2d(128, 128, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(128),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size = 2, stride = 2))
+        self.layer5 = nn.Sequential(
+            nn.Conv2d(128, 256, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(256),
+            nn.ReLU())
+        self.layer6 = nn.Sequential(
+            nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(256),
+            nn.ReLU())
+        self.layer7 = nn.Sequential(
+            nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(256),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size = 2, stride = 2))
+        self.layer8 = nn.Sequential(
+            nn.Conv2d(256, 512, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(512),
+            nn.ReLU())
+        self.layer9 = nn.Sequential(
+            nn.Conv2d(512, 512, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(512),
+            nn.ReLU())
+        self.layer10 = nn.Sequential(
+            nn.Conv2d(512, 512, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(512),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size = 2, stride = 2))
+        self.layer11 = nn.Sequential(
+            nn.Conv2d(512, 512, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(512),
+            nn.ReLU())
+        self.layer12 = nn.Sequential(
+            nn.Conv2d(512, 512, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(512),
+            nn.ReLU())
+        self.layer13 = nn.Sequential(
+            nn.Conv2d(512, 512, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(512),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size = 2, stride = 2))
+        self.fc = nn.Sequential(
+            nn.Dropout(0.5),
+            nn.Linear(4608, 256),
+            nn.ReLU())
+        self.fc1 = nn.Sequential(
+            nn.Dropout(0.5),
+            nn.Linear(256, 128),
+            nn.ReLU())
+        self.fc2= nn.Sequential(
+            nn.Linear(128, num_classes))
+        
+    def forward(self, x):
+        out = self.layer1(x)
+        out = self.layer2(out)
+        out = self.layer3(out)
+        out = self.layer4(out)
+        out = self.layer5(out)
+        out = self.layer6(out)
+        out = self.layer7(out)
+        out = self.layer8(out)
+        out = self.layer9(out)
+        out = self.layer10(out)
+        out = self.layer11(out)
+        out = self.layer12(out)
+        out = self.layer13(out)
+        #print(out.shape)
+        out = out.reshape(out.size(0), -1)
+        #print(out.shape)
+        out = self.fc(out)
+        out = self.fc1(out)
+        out = self.fc2(out)
+        return torch.sigmoid(out)
+
+model = VGG16()
 model = model.to('cuda')
 
 
@@ -143,7 +290,7 @@ print("The validation accuracy of the untrained model is: {}".format(val_acc_old
 # initialise the model, define the optimizer and loss
 
 learning_rate = 1e-3
-loss_fn = torch.nn.BCEWithLogitsLoss()
+loss_fn = torch.nn.BCELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 # create an LR scheduler, dividing the learning rate by 10 every epoch
@@ -151,7 +298,9 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 # scheduler = MultiplicativeLR(optimizer, lr_lambda=lr_lambda)
 print("Start training...")
 
-for epoch in range(5):
+epochs = 1
+
+for epoch in range(epochs):
     print("Epoch", epoch+1)
     for batch_idx, (x, y) in enumerate(train_loader):
         x = x.to(device)
@@ -183,8 +332,7 @@ for epoch in range(5):
     #     print("Stop training")
     #     break
     print()
-
-
+"""
 class HDF5Dataset(Dataset):
     def __init__(self, input_file_path, transforms=None):
         self.input_file_path = input_file_path
@@ -222,5 +370,6 @@ def save_test_predictions(model, test_loader):
         y_pred = model(x).round().to(torch.int).cpu()
         test_preds.append(y_pred)
     result_df = pd.DataFrame(torch.stack(test_preds).reshape(-1).numpy(), columns=["predicted label"])
-    result_df.to_csv("predicted_labels_test.csv", index=False)
+    result_df.to_csv("predicted_labels_test_alexnet.csv", index=False)
 save_test_predictions(model, test_loader)
+"""

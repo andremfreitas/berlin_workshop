@@ -1,0 +1,17 @@
+[2024-02-27 13:23:18,771][schnetpack.cli][INFO] - Running on host: DESKTOP-OEHV6B1
+[2024-02-27 13:23:18,805][schnetpack.cli][INFO] - Seed randomly...
+[2024-02-27 13:23:18,809][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.datasets.MD17>
+[2024-02-27 13:23:18,815][schnetpack.cli][INFO] - Instantiating model <schnetpack.model.NeuralNetworkPotential>
+[2024-02-27 13:23:18,828][schnetpack.cli][INFO] - Instantiating task <schnetpack.AtomisticTask>
+[2024-02-27 13:23:18,848][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ModelCheckpoint>
+[2024-02-27 13:23:18,851][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2024-02-27 13:23:18,852][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2024-02-27 13:23:18,852][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ExponentialMovingAverage>
+[2024-02-27 13:23:18,853][schnetpack.cli][INFO] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2024-02-27 13:23:18,881][schnetpack.cli][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2024-02-27 13:23:18,993][schnetpack.cli][INFO] - Logging hyperparameters.
+[2024-02-27 13:23:21,864][schnetpack.cli][INFO] - Starting training.
+[2024-02-27 13:23:21,999][root][INFO] - Downloading aspirin data
+[2024-02-27 13:23:32,650][root][INFO] - Parsing molecule aspirin
+[2024-02-27 13:23:37,194][root][INFO] - Write atoms to db...
+[2024-02-27 13:24:26,513][schnetpack.cli][INFO] - Starting testing.

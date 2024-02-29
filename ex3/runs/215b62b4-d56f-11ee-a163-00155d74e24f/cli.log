@@ -1,0 +1,12 @@
+[2024-02-27 13:52:57,294][schnetpack.cli][INFO] - Running on host: DESKTOP-OEHV6B1
+[2024-02-27 13:52:57,326][schnetpack.cli][INFO] - Seed randomly...
+[2024-02-27 13:52:57,328][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.data.AtomsDataModule>
+[2024-02-27 13:52:57,332][schnetpack.cli][INFO] - Instantiating model <schnetpack.model.NeuralNetworkPotential>
+[2024-02-27 13:52:57,342][schnetpack.cli][INFO] - Instantiating task <schnetpack.AtomisticTask>
+[2024-02-27 13:52:57,357][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ModelCheckpoint>
+[2024-02-27 13:52:57,359][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2024-02-27 13:52:57,360][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2024-02-27 13:52:57,360][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ExponentialMovingAverage>
+[2024-02-27 13:52:57,360][schnetpack.cli][INFO] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2024-02-27 13:52:57,376][schnetpack.cli][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2024-02-27 13:52:57,483][schnetpack.cli][INFO] - Logging hyperparameters.

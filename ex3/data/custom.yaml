@@ -1,0 +1,12 @@
+_target_: schnetpack.data.AtomsDataModule
+
+#datapath: /home/andre2500/berlin_workshop/ex3/data/ethanol.db
+#data_workdir: null
+batch_size: 10
+num_train: 1000
+num_val: 100
+#num_test: null
+num_workers: 10
+#num_val_workers: 5
+#num_test_workers: 5
+#train_sampler_cls: 5

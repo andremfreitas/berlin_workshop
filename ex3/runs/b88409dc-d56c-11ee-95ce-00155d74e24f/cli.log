@@ -1,0 +1,17 @@
+[2024-02-27 13:35:42,407][schnetpack.cli][INFO] - Running on host: DESKTOP-OEHV6B1
+[2024-02-27 13:35:42,439][schnetpack.cli][INFO] - Seed randomly...
+[2024-02-27 13:35:42,441][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.datasets.MD17>
+[2024-02-27 13:35:42,445][schnetpack.cli][INFO] - Instantiating model <schnetpack.model.NeuralNetworkPotential>
+[2024-02-27 13:35:42,455][schnetpack.cli][INFO] - Instantiating task <schnetpack.AtomisticTask>
+[2024-02-27 13:35:42,471][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ModelCheckpoint>
+[2024-02-27 13:35:42,473][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2024-02-27 13:35:42,474][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2024-02-27 13:35:42,474][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ExponentialMovingAverage>
+[2024-02-27 13:35:42,474][schnetpack.cli][INFO] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2024-02-27 13:35:42,489][schnetpack.cli][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2024-02-27 13:35:42,595][schnetpack.cli][INFO] - Logging hyperparameters.
+[2024-02-27 13:35:43,998][schnetpack.cli][INFO] - Starting training.
+[2024-02-27 13:36:09,828][schnetpack.cli][INFO] - Starting testing.
+[2024-02-27 13:36:10,071][schnetpack.cli][INFO] - Best checkpoint path:
+/home/andre2500/berlin_workshop/ex3/runs/b88409dc-d56c-11ee-95ce-00155d74e24f/checkpoints/epoch=00.ckpt
+[2024-02-27 13:36:10,071][schnetpack.cli][INFO] - Store best model

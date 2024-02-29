@@ -1,0 +1,3 @@
+[2024-02-27 13:51:33,915][schnetpack.cli][INFO] - Running on host: DESKTOP-OEHV6B1
+[2024-02-27 13:51:33,948][schnetpack.cli][INFO] - Seed randomly...
+[2024-02-27 13:51:33,950][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.data.AtomsDataModule>
